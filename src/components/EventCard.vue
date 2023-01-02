@@ -10,8 +10,7 @@
 <script>
 export default {
   props: {
-    event: Object,
-    required: true
+    type: Object
   }
 };
 </script>
