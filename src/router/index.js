@@ -14,7 +14,7 @@ const routes = [
     props: route => ({ page: parseInt(route.query.page) || 1 })
   },
   {
-    path: '/event/:id',
+    path: '/events/:id',
     name: 'EventLayout',
     props: true,
     component: EventLayout,
@@ -37,9 +37,23 @@ const routes = [
     ]
   },
   {
-    path: '/about',
+    path: '/event/:id',
+    redirect: () => {
+      return { name: 'EventDetails' }
+    },
+    children: [
+      { path: 'register', redirect: () => ({ name: 'EventRegister' }) },
+      { path: 'edit', redirect: () => ({ name: 'EventEdit' }) }
+    ]
+  },
+  {
+    path: '/about-us',
     name: 'About',
     component: About
+  },
+  {
+    path: '/about',
+    redirect: { name: "About" }
   }
 ]
 
